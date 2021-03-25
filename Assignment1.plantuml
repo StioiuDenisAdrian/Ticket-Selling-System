@@ -1,0 +1,278 @@
+@startuml
+
+title __ASSIGNMENT1's Class Diagram__\n
+
+  namespace  {
+    class MavenWrapperDownloader {
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      class com.example.demo.DemoApplication {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace config {
+        class com.example.demo.config.SecurityConfig {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace controller {
+        class com.example.demo.controller.BillController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace controller {
+        class com.example.demo.controller.ConcertController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace controller {
+        class com.example.demo.controller.TicketController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace controller {
+        class com.example.demo.controller.UserController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace factorymethod {
+        class com.example.demo.factorymethod.BillFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace factorymethod {
+        interface com.example.demo.factorymethod.Bills {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace factorymethod {
+        class com.example.demo.factorymethod.CSVBill {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace factorymethod {
+        class com.example.demo.factorymethod.JSONBill {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace model {
+        class com.example.demo.model.Concert {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace model {
+        class com.example.demo.model.Role {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace model {
+        class com.example.demo.model.Ticket {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace model {
+        class com.example.demo.model.User {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace repository {
+        interface com.example.demo.repository.ConcertRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace repository {
+        interface com.example.demo.repository.RoleRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace repository {
+        interface com.example.demo.repository.TicketRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace repository {
+        interface com.example.demo.repository.UserRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace service {
+        interface com.example.demo.service.ConcertService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace service {
+        class com.example.demo.service.ConcertServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace service {
+        interface com.example.demo.service.TicketService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace service {
+        class com.example.demo.service.TicketServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace service {
+        interface com.example.demo.service.UserService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.example.demo {
+      namespace service {
+        class com.example.demo.service.UserServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  com.example.demo.config.SecurityConfig -up-|> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+  com.example.demo.controller.BillController o-- com.example.demo.factorymethod.BillFactory : billFactory
+  com.example.demo.controller.ConcertController o-- com.example.demo.service.ConcertService : concertService
+  com.example.demo.controller.TicketController o-- com.example.demo.service.ConcertService : concertService
+  com.example.demo.controller.TicketController o-- com.example.demo.service.TicketService : ticketService
+  com.example.demo.controller.UserController o-- com.example.demo.service.UserService : userService
+  com.example.demo.factorymethod.BillFactory o-- com.example.demo.factorymethod.CSVBill : csvBill
+  com.example.demo.factorymethod.BillFactory o-- com.example.demo.factorymethod.JSONBill : jsonBill
+  com.example.demo.factorymethod.CSVBill .up.|> com.example.demo.factorymethod.Bills
+  com.example.demo.factorymethod.CSVBill o-- com.example.demo.service.ConcertService : concertService
+  com.example.demo.factorymethod.CSVBill o-- com.example.demo.service.TicketService : ticketService
+  com.example.demo.factorymethod.JSONBill .up.|> com.example.demo.factorymethod.Bills
+  com.example.demo.factorymethod.JSONBill o-- com.example.demo.service.TicketService : ticketService
+  com.example.demo.service.ConcertServiceImpl .up.|> com.example.demo.service.ConcertService
+  com.example.demo.service.ConcertServiceImpl o-- com.example.demo.repository.ConcertRepository : concertRepository
+  com.example.demo.service.TicketServiceImpl .up.|> com.example.demo.service.TicketService
+  com.example.demo.service.TicketServiceImpl o-- com.example.demo.repository.TicketRepository : ticketRepository
+  com.example.demo.service.UserServiceImpl .up.|> com.example.demo.service.UserService
+  com.example.demo.service.UserServiceImpl o-- com.example.demo.repository.RoleRepository : roleRepository
+  com.example.demo.service.UserServiceImpl o-- com.example.demo.repository.UserRepository : userRepository
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
